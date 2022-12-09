@@ -15,10 +15,15 @@ const genImg = async (req, res) => {
       size: imageSize,
     });
     const imageUrl = response.data.data[0].url;
-    res.status(200).json({
-      success: true,
-      data: imageUrl,
+    res.render("index", {
+      data: {
+        img: { url: imageUrl },
+      },
     });
+    // res.status(200).json({
+    //   success: true,
+    //   data: imageUrl,
+    // });
   } catch (error) {
     if (error.response) {
       console.log(error.response.status);
